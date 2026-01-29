@@ -1,4 +1,4 @@
-FROM python:3.14.2.slim
+FROM python:3.14.2-slim
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /bin/
 
@@ -8,8 +8,8 @@ RUN uv sync --locked
 WORKDIR /app
 ENV PATH="/app/.venv/bin:$PATH"
 
-COPY ingestion.py
+COPY ingestion.py .
 
-ENTRYPOINT ["python", "pipeline.py"]
+ENTRYPOINT ["python", "ingestion.py"]
 
 
